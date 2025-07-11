@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
     <body class="bg-gradient-to-r from-green-100 to-blue-100 font-sans antialiased">
+         <img src="{{ asset('images/background.png') }}" alt="Background"
+         class="absolute inset-0 w-full h-full object-cover opacity-20 -z-10">
         <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative" style="background-image: url('{{ asset('images/background-auth.png') }}')">
             <div class="bg-white/80 rounded-lg shadow-md w-full max-w-md p-6 backdrop-blur-md z-10">
                 {{ $slot }}

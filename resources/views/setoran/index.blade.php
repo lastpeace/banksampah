@@ -4,9 +4,12 @@
 <div class="bg-white p-6 rounded shadow">
     <h1 class="text-2xl font-bold text-green-700 mb-4">Data Setoran Sampah</h1>
 
-    <a href="{{ route('setoran.create') }}" class="bg-green-600 text-white px-4 py-2 rounded mb-4 inline-block hover:bg-green-700">
-        + Tambah Setoran
-    </a>
+   <div class="flex justify-end mb-4">
+        <a href="{{ route('setoran.create') }}"
+            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow">
+            + Tambah Nasabah
+        </a>
+    </div>
 
     <table class="min-w-full bg-white">
         <thead class="bg-green-100">
@@ -29,14 +32,23 @@
                 <td class="py-2 px-4 border-b">{{ $setoran->jenis_sampah }}</td>
                 <td class="py-2 px-4 border-b">{{ $setoran->berat }}</td>
                 <td class="py-2 px-4 border-b">Rp {{ number_format($setoran->total, 0, ',', '.') }}</td>
-                <td class="py-2 px-4 border-b space-x-2">
-                    <a href="{{ route('setoran.edit', $setoran) }}" class="text-blue-600 hover:underline">Edit</a>
-                    <form action="{{ route('setoran.destroy', $setoran) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')" class="inline">
+               <td class="py-2 px-4 border-b flex items-center space-x-3">
+    <!-- Tombol Edit -->
+                    <a href="{{ route('setoran.edit', $setoran) }}" class="text-blue-600 hover:text-blue-800" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <!-- Tombol Hapus -->
+                    <form action="{{ route('setoran.destroy', $setoran) }}" method="POST"
+                        onsubmit="return confirm('Yakin ingin menghapus?')" class="inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:underline">Hapus</button>
+                        <button type="submit" class="text-red-600 hover:text-red-800" title="Hapus">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </form>
                 </td>
+
             </tr>
             @endforeach
         </tbody>
