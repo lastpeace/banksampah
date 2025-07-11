@@ -1,7 +1,5 @@
 Aplikasi pencatatan keuangan berbasis Laravel Breeze. Sistem ini mencatat data nasabah, setoran sampah, penarikan saldo, dan laporan keuangan dengan antarmuka sederhana dan responsif.
 
-![Dashboard Screenshot](public/images/screenshot.png) <!-- Ganti dengan screenshot dashboard-mu -->
-
 ---
 
 ## 🚀 Fitur Utama
