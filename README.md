@@ -1,20 +1,15 @@
-📦 Bank Sampah
-Aplikasi pencatatan keuangan Bank Sampah Desa Kalongan berbasis Laravel Breeze. Sistem ini mencatat data nasabah, setoran sampah, penarikan saldo, dan laporan keuangan dengan UI sederhana namun fungsional.
+Aplikasi pencatatan keuangan berbasis Laravel Breeze. Sistem ini mencatat data nasabah, setoran sampah, penarikan saldo, dan laporan keuangan dengan antarmuka sederhana dan responsif.
 
-<!-- Ubah jika punya gambar -->
+![Dashboard Screenshot](public/images/screenshot.png) <!-- Ganti dengan screenshot dashboard-mu -->
 
-🚀 Fitur Utama
-✅ Autentikasi (Register & Login) dengan Laravel Breeze
+---
 
-🧾 Manajemen Data Nasabah
+## 🚀 Fitur Utama
 
-♻️ Pencatatan Setoran Sampah (plastik, kertas, logam, dll)
-
-💸 Penarikan Saldo nasabah
-
-📊 Laporan Keuangan per bulan dan range waktu
-
-🌤️ Antarmuka bersih, ringan, dan responsif (TailwindCSS)
-
-🔒 Akses aman hanya untuk pengguna yang terautentikasi
-
+- ✅ Autentikasi dengan Laravel Breeze
+- 👤 Manajemen **Data Nasabah**
+- ♻️ **Setoran Sampah** (otomatis menambah saldo)
+- 💸 **Penarikan Saldo** (otomatis mengurangi saldo)
+- 📊 **Laporan Keuangan** per bulan & rentang waktu
+- 🎨 Antarmuka ringan & clean dengan TailwindCSS
+- 🔐 Proteksi login & akses hanya untuk user terdaftar
