@@ -53,38 +53,40 @@ class SetoranController extends Controller
     }
 
 
-    /**
-     * Tampilkan form edit setoran.
-     */
-    public function edit(Setoran $setoran)
-    {
-        $nasabahs = Nasabah::all();
-        return view('setoran.edit', compact('setoran', 'nasabahs'));
-    }
+   
+   public function edit($id)
+{
+    $setoran = Setoran::findOrFail($id);
+    $nasabahs = Nasabah::all();
 
-    /**
-     * Update data setoran.
-     */
-    public function update(Request $request, Setoran $setoran)
-    {
-        $request->validate([
-            'nasabah_id' => 'required|exists:nasabahs,id',
-            'tanggal' => 'required|date',
-            'jenis_sampah' => 'required|string|max:255',
-            'berat' => 'required|numeric|min:0',
-            'jumlah' => 'required|numeric|min:0'
-        ]);
+    return view('setoran.edit', compact('setoran', 'nasabahs'));
+}
 
-        $setoran->update([
-            'nasabah_id' => $request->nasabah_id,
-            'tanggal' => $request->tanggal,
-            'jenis_sampah' => $request->jenis_sampah,
-            'berat' => $request->berat,
-            'jumlah' => $request->jumlah,
-        ]);
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'nasabah_id'    => 'required|exists:nasabahs,id',
+        'tanggal'       => 'required|date',
+        'jenis_sampah'  => 'required|string|max:255',
+        'berat'         => 'required|numeric|min:0',
+        'harga_per_kg'  => 'required|numeric|min:0',
+        'total'         => 'required|numeric|min:0',
+    ]);
 
-        return redirect()->route('setoran.index')->with('success', 'Setoran berhasil diperbarui.');
-    }
+    $setoran = Setoran::findOrFail($id);
+
+    $setoran->update([
+        'nasabah_id'    => $request->nasabah_id,
+        'tanggal'       => $request->tanggal,
+        'jenis_sampah'  => $request->jenis_sampah,
+        'berat'         => $request->berat,
+        'harga_per_kg'  => $request->harga_per_kg,
+        'total'         => $request->total,
+    ]);
+
+    return redirect()->route('setoran.index')->with('success', 'Data setoran berhasil diperbarui.');
+}
+
 
     /**
      * Hapus data setoran.
