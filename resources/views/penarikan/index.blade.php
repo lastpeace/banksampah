@@ -4,12 +4,17 @@
 <div class="bg-white p-6 rounded shadow">
     <h1 class="text-2xl font-bold text-green-700 mb-4">Data Penarikan Uang</h1>
 
-   <div class="flex justify-end mb-4">
-        <a href="{{ route('penarikan.create') }}"
-            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow">
-            + Tambah Penarikan
-        </a>
-    </div>
+   <div class="flex justify-end mb-4 space-x-4">
+    <a href="{{ route('pengelola.index') }}"
+        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow">
+        + Tambah Penarikan Pengelola
+    </a>
+    <a href="{{ route('penarikan.create') }}"
+        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow">
+        + Tambah Penarikan
+    </a>
+</div>
+
 
     <table class="min-w-full bg-white">
         <thead class="bg-green-100">

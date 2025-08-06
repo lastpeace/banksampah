@@ -37,9 +37,13 @@
         </div>
 
         <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded shadow">
-        <p class="text-gray-600">Bagi Hasil Pengelola</p>
-        <p class="text-xl font-bold text-yellow-700">Rp {{ number_format($totalBagiHasilPengelola, 0, ',', '.') }}</p>
-    </div>
+            <p class="text-gray-600">Bagi Hasil Pengelola</p>
+            <p class="text-xl font-bold text-yellow-700">Rp {{ number_format($totalBagiHasilPengelola, 0, ',', '.') }}</p>
+        </div>
+        <div class="bg-red-100 border-l-4 border-red-500 p-4 rounded shadow">
+            <p class="text-gray-600">Penarikan Pengelola</p>
+            <p class="text-xl font-bold text-red-600">Rp {{ number_format($totalPenarikanPengelola, 0, ',', '.') }}</p>
+        </div>
     </div>
 
     <!-- Tabel Transaksi -->

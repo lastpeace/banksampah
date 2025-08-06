@@ -6,6 +6,7 @@ use App\Http\Controllers\PenarikanController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\NasabahController;
 use App\Http\Controllers\SetoranController;
+use App\Http\Controllers\PenarikanPengelolaController;
 
 
 Route::get('/', function () {
@@ -20,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penarikan', [PenarikanController::class, 'index'])->name('penarikan.index');
     Route::resource('penarikan', PenarikanController::class)->except(['index']);
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::resource('pengelola', PenarikanPengelolaController::class);
+
 });
 
 

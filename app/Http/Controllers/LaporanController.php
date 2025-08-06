@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Setoran;
 use App\Models\Penarikan;
-
+use App\Models\PenarikanPengelola;
 class LaporanController extends Controller
 {
     public function index(Request $request)
@@ -18,6 +18,7 @@ class LaporanController extends Controller
         $setoranModels = Setoran::with('nasabah')
             ->whereBetween('tanggal', [$start, $end])
             ->get();
+$totalPenarikanPengelola = PenarikanPengelola::whereBetween('tanggal', [$start, $end])->sum('jumlah');
 
         // Ambil data Penarikan (asli, untuk perhitungan)
         $penarikanModels = Penarikan::with('nasabah')
@@ -50,7 +51,9 @@ class LaporanController extends Controller
         $totalSetoran = $setoranModels->sum('bagi_hasil_nasabah');
         $totalPenarikan = $penarikanModels->sum('jumlah');
         $saldoBersih = $totalSetoran - $totalPenarikan;
-        $totalBagiHasilPengelola = $setoranModels->sum('bagi_hasil_pengelola');
+        $totalBagiHasilKotor = $setoranModels->sum('bagi_hasil_pengelola');
+        $totalBagiHasilPengelola = $totalBagiHasilKotor - $totalPenarikanPengelola;
+
 
         // Kirim ke view
         return view('laporan.index', compact(
@@ -59,6 +62,7 @@ class LaporanController extends Controller
             'totalPenarikan',
             'saldoBersih',
             'totalBagiHasilPengelola',
+            'totalPenarikanPengelola',
             'start',
             'end'
         ));
