@@ -8,11 +8,11 @@
     <form method="GET" class="mb-6 flex flex-col md:flex-row items-start md:items-end gap-4">
         <div>
             <label for="start" class="text-sm text-gray-700 font-semibold">Tanggal Awal</label>
-            <input type="date" name="start" id="start" value="{{ request('start') }}" class="border rounded px-3 py-2 w-full">
+            <input type="date" name="start" id="start" value="{{ e(request('start', now()->subMonth()->toDateString())) }}" class="border rounded px-3 py-2 w-full">
         </div>
         <div>
             <label for="end" class="text-sm text-gray-700 font-semibold">Tanggal Akhir</label>
-            <input type="date" name="end" id="end" value="{{ request('end') }}" class="border rounded px-3 py-2 w-full">
+            <input type="date" name="end" id="end" value="{{ e(request('end', now()->toDateString())) }}" class="border rounded px-3 py-2 w-full">
         </div>
         <div>
             <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-6">Filter</button>
@@ -35,6 +35,11 @@
             <p class="text-gray-600">Saldo Bersih</p>
             <p class="text-xl font-bold text-blue-700">Rp {{ number_format($saldoBersih, 0, ',', '.') }}</p>
         </div>
+
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded shadow">
+        <p class="text-gray-600">Bagi Hasil Pengelola</p>
+        <p class="text-xl font-bold text-yellow-700">Rp {{ number_format($totalBagiHasilPengelola, 0, ',', '.') }}</p>
+    </div>
     </div>
 
     <!-- Tabel Transaksi -->
@@ -53,13 +58,13 @@
                 <tbody>
                     @forelse ($transaksis as $transaksi)
                         <tr class="border-t">
-                            <td class="px-4 py-2">{{ $transaksi['tanggal'] }}</td>
+                            <td class="px-4 py-2">{{ \Carbon\Carbon::parse($transaksi['tanggal'])->format('Y-m-d') }}</td>
                             <td class="px-4 py-2">
                                 <span class="font-semibold {{ $transaksi['jenis'] === 'Setoran' ? 'text-green-600' : 'text-red-600' }}">
-                                    {{ $transaksi['jenis'] }}
+                                    {{ e($transaksi['jenis']) }}
                                 </span>
                             </td>
-                            <td class="px-4 py-2">{{ $transaksi['nasabah']->nama ?? '-' }}</td>
+                            <td class="px-4 py-2">{{ optional($transaksi['nasabah'])->nama ?? '-' }}</td>
                             <td class="px-4 py-2">Rp {{ number_format($transaksi['jumlah'], 0, ',', '.') }}</td>
                         </tr>
                     @empty

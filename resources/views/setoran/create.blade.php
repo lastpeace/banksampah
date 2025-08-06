@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('setoran.store') }}" method="POST" id="setoranForm">
+    <form action="{{ route('setoran.store') }}" method="POST">
         @csrf
 
         <!-- Pilih Nasabah -->
@@ -40,9 +40,15 @@
             <input type="text" name="jenis_sampah" id="jenis_sampah" class="w-full border rounded px-3 py-2" placeholder="Plastik, Kertas, dll." required>
         </div>
 
+        <!-- Item Sampah -->
+        <div class="mb-4">
+            <label for="item_sampah" class="block font-semibold">Item Sampah</label>
+            <input type="text" name="item_sampah" id="item_sampah" class="w-full border rounded px-3 py-2" placeholder="Botol Aqua, Kertas HVS, dll." required>
+        </div>
+
         <!-- Berat -->
         <div class="mb-4">
-            <label for="berat" class="block font-semibold">Berat (kg)</label>
+            <label for="berat" class="block font-semibold">Berat (Kg)</label>
             <input type="number" name="berat" id="berat" class="w-full border rounded px-3 py-2" step="0.1" min="0" required>
         </div>
 
@@ -52,10 +58,15 @@
             <input type="number" name="harga_per_kg" id="harga_per_kg" class="w-full border rounded px-3 py-2" step="100" min="0" required>
         </div>
 
-        <!-- Total -->
         <div class="mb-4">
-            <label for="total" class="block font-semibold">Total (Rp)</label>
-            <input type="number" name="total" id="total" class="w-full border rounded px-3 py-2" readonly required>
+    <label for="persentase_nasabah" class="block font-semibold">Persentase untuk Nasabah (%)</label>
+    <input type="number" name="persentase_nasabah" id="persentase_nasabah" class="w-full border rounded px-3 py-2" min="1" max="100" value="50" required>
+</div>
+
+        <!-- Poin -->
+        <div class="mb-4">
+            <label for="poin" class="block font-semibold">Poin</label>
+            <input type="number" name="poin" id="poin" class="w-full border rounded px-3 py-2" placeholder="Jumlah poin" min="0" required>
         </div>
 
         <button type="submit" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded font-semibold w-full">
@@ -63,20 +74,4 @@
         </button>
     </form>
 </div>
-
-<!-- Script untuk hitung total otomatis -->
-<script>
-    const beratInput = document.getElementById('berat');
-    const hargaInput = document.getElementById('harga_per_kg');
-    const totalInput = document.getElementById('total');
-
-    function hitungTotal() {
-        const berat = parseFloat(beratInput.value) || 0;
-        const harga = parseFloat(hargaInput.value) || 0;
-        totalInput.value = berat * harga;
-    }
-
-    beratInput.addEventListener('input', hitungTotal);
-    hargaInput.addEventListener('input', hitungTotal);
-</script>
 @endsection
