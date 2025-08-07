@@ -16,6 +16,7 @@
             <tr>
                 <th class="py-2 px-4 border-b text-left">No</th>
                 <th class="py-2 px-4 border-b text-left">Nama</th>
+                <th class="py-2 px-4 border-b text-left">No. Induk</th>
                 <th class="py-2 px-4 border-b text-left">Alamat</th>
                 <th class="py-2 px-4 border-b text-left">No HP</th>
                 <th class="py-2 px-4 border-b text-left">Saldo</th>
@@ -27,6 +28,7 @@
             <tr>
                 <td class="py-2 px-4 border-b">{{ $loop->iteration }}</td>
                 <td class="py-2 px-4 border-b">{{ $nasabah->nama }}</td>
+                <td class="py-2 px-4 border-b">{{ $nasabah->no_induk }}</td>
                 <td class="py-2 px-4 border-b">{{ $nasabah->alamat }}</td>
                 <td class="py-2 px-4 border-b">{{ $nasabah->no_hp }}</td>
                 <td class="py-2 px-4 border-b">Rp {{ number_format($nasabah->saldo, 0, ',', '.') }}</td>

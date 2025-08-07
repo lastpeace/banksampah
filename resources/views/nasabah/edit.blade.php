@@ -14,6 +14,11 @@
                 class="w-full border rounded px-3 py-2 mt-1 focus:ring focus:ring-green-300">
         </div>
 
+         <div class="mb-4">
+            <label for="no_induk" class="block font-semibold">No. Induk</label>
+            <textarea id="no_induk" name="no_induk" required
+                class="w-full border rounded px-3 py-2 mt-1 focus:ring focus:ring-green-300">{{ $nasabah->alamat }}</textarea>
+        </div>
         <div class="mb-4">
             <label for="alamat" class="block font-semibold">Alamat</label>
             <textarea id="alamat" name="alamat" required

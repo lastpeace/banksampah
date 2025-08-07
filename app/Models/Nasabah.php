@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nasabah extends Model
 {
-    protected $fillable = ['nama', 'alamat', 'no_hp', 'saldo'];
+    protected $fillable = ['nama','no_induk', 'alamat', 'no_hp', 'saldo'];
 
     public function setorans()
     {
